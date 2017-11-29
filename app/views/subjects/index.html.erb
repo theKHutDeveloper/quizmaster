@@ -1,0 +1,29 @@
+<div class="container-fluid">
+	<div class="title-button">
+	<a class="btn btn-primary" href=<%= new_subject_path %> role="button">New Subject</a>
+</div>
+	<table class="table">
+		<thead>
+			<tr class="active">
+				<th>#</th>
+				<th>Subject</th>
+				<th>Difficulty</th>
+				<th>Points</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @subjects.each do |subject| %>
+				<tr>
+					<th scope="row"><%= subject.id %></th>
+					<td><%= subject.subject %></td>
+					<td><%= subject.difficulty %></td>
+					<td><%= subject.points %></td>
+					<td><a href= <%=edit_subject_path(subject)%> class="btn btn-primary btn-xs" role="button">Edit</a></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+
+<%=link_to "Back to Admin", admin_pages_path %>

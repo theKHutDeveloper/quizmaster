@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quizmaster</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header"><%= link_to "QuizMaster", root_path, class: "navbar-brand" %></div>
+          <ul class="nav navbar-nav navbar-right">
+            <% if current_user %>
+                <li><%= link_to "Log Out", logout_path, method: "delete"%></li>
+                <li><%=link_to current_user.email, root_path %></li>
+                <% if current_user.admin? %>
+                  <li><%= link_to "Admin Page", admin_pages_path %></li>
+                <% end %>
+              <% else %>
+                <li><%= link_to "Log In", 'login' %></li>
+                <li><%= link_to "Sign Up", 'signup' %></li>
+              <% end %>
+          </ul>
+        </div>
+    </nav>
+
+    <div class="jumbotron">
+      <h1 id="header">QuizMaster</h1>
+      <p id="home">Test your knowledge on the Marvel Cinematic Universe
+      (Television Series)</p>
+    </div>
+
+    <div class="container">
+		    <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>"><%= value %></div>
+        <% end %>
+    </div>
+
+    <%= yield %>
+  </body>
+</html>

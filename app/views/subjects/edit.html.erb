@@ -1,0 +1,8 @@
+<h2>Edit Subject</h2>
+
+<%= simple_form_for @subject  do |f| %>
+	<%= f.input :subject %>
+  <%= f.input :difficulty %>
+  <%= f.input :points %>
+  <%= f.button :submit %>
+<% end %>

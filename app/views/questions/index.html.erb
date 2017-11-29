@@ -1,0 +1,45 @@
+<div class="container-fluid">
+	<% if current_user.admin? %>
+		<div class="title-button">
+			<a class="btn btn-primary" href=<%= new_question_path %> role="button">New Question</a>
+		</div>
+	<% end %>
+
+	<%= will_paginate @questions, :renderer => BootstrapPagination::Rails %><br>
+
+	<table class="table">
+		<thead>
+			<tr class="active">
+				<th>Subject</th>
+				<th>Question</th>
+				<th>Choice 1</th>
+				<th>Choice 2</th>
+				<th>Choice 3</th>
+				<th>Answer</th>
+				<% if current_user.admin? %>
+					<th></th>
+				<% end %>
+			</tr>
+		</thead>
+		<tbody>
+			<% @questions.each do |q| %>
+				<tr>
+					<td><%= q.subject.subject %></td>
+					<td><%= q.question %></td>
+					<td><%= q.choice1 %></td>
+					<td><%= q.choice2 %></td>
+					<td><%= q.choice3 %></td>
+					<td><%= q.answer %></td>
+					<% if current_user.admin? %>
+						<td><a href= <%=edit_question_path(q)%> class="btn btn-primary btn-xs" role="button">Edit</a></td>
+					<% end %>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+
+<!--    -->
+<!--Add new question -->
+<!--Add feature to filter by subject -->
+<!--Subject should reveal the subject not id -->

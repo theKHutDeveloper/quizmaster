@@ -1,0 +1,82 @@
+
+<div class="row">
+  	<div class="col-xs-6 col-md-2 col-md-offset-1">
+      <div class="thumbnail">
+      	<a href= 
+        	<% if current_user.admin? %>
+	        	<%= questions_path(subject_id: Subject.find_by_subject("Daredevil").id) %>
+	        <% else %>
+	        	<%= question_path(Subject.find_by_subject("Daredevil").id) %>
+	        <% end %>
+				>
+        <img src="/assets/daredevil.jpg" alt="Daredevil"></a>
+        <div class="caption">
+          <h4>Daredevil</h3>
+        </div>
+      </div>
+  	</div>
+
+  	<div class="col-xs-6 col-md-2">
+      <div class="thumbnail"> 
+        <a href= 
+        	<% if current_user.admin? %>
+	        	<%= questions_path(subject_id: Subject.find_by_subject("Iron Fist").id) %>
+	        <% else %>
+	        	<%= question_path(Subject.find_by_subject("Iron Fist").id) %>
+	        <% end %>
+				>
+        <img src="/assets/ironfist.jpg" alt="Iron Fist"></a>
+        <div class="caption">
+          <h4>Iron Fist</h3>
+        </div>
+      </div>
+  	</div>
+
+    <div class="col-xs-6 col-md-2">
+      <div class="thumbnail">
+        <a href= 
+        	<% if current_user.admin? %>
+	        	<%= questions_path(subject_id: Subject.find_by_subject("Jessica Jones").id) %>
+	        <% else %>
+	        	<%= question_path(Subject.find_by_subject("Jessica Jones").id) %>
+	        <% end %>
+				>
+				<img src="/assets/jessicajones.jpg" alt="Jessica Jones"></a>
+        <div class="caption">
+          <h4>Jessica Jones</h3>
+        </div>
+      </div>
+  	</div>
+
+  	<div class="col-xs-6 col-md-2">
+      <div class="thumbnail">
+        <a href= 
+	        <% if current_user.admin? %>
+	        	<%= questions_path(subject_id: Subject.find_by_subject("Luke Cage").id) %>
+	        <% else %>
+	        	<%= question_path(Subject.find_by_subject("Luke Cage").id) %>
+	        <% end %>
+        >
+        <img src="/assets/lukecage.jpg" alt="Luke Cage"></a>
+        <div class="caption">
+          <h4>Luke Cage</h3>
+        </div>
+      </div>
+  	</div>
+
+  	<div class="col-xs-6 col-md-2">
+      <div class="thumbnail">
+        <a href= 
+        	<% if current_user.admin? %>
+        		<%= questions_path(subject_id: Subject.find_by_subject("Punisher").id) %>
+        	<% else %>
+        		<%= question_path(Subject.find_by_subject("Punisher").id) %>
+        	<% end %>
+         >
+        	<img src="/assets/punisher.jpg" alt="Punisher"></a>
+        <div class="caption">
+          <h4>Punisher</h3>
+        </div>
+      </div>
+  	</div>
+</div>

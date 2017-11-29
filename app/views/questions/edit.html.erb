@@ -1,0 +1,12 @@
+<h2>Edit Question</h2>
+
+<%= simple_form_for @question  do |f| %>
+	
+<%= f.collection_select :subject_id, Subject.all.uniq, :id, :subject, {:include_blank => 'Select Subject'} %>
+  <%= f.input :question %>
+  <%= f.input :choice1 %>
+  <%= f.input :choice2 %>
+  <%= f.input :choice3 %>
+  <%= f.input :answer %>
+  <%= f.button :submit %>
+<% end %>

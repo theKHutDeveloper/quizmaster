@@ -1,9 +1,9 @@
 <h2>New Quiz</h2>
 
-
 <%= will_paginate @questions, :renderer => BootstrapPagination::Rails %><br>
 <%= simple_form_for @quiz do |f| %>
-
+  <%= f.hidden_field :user_id, value: @user_id %>
+  <%= f.hidden_field :subject_id, value: @subject_id %>
   <% @questions.each_with_index do |question, i| %>
     <h4><%= question.question %></h4>
 
@@ -12,9 +12,8 @@
     <% end %>
 
     <% if @quiz_size == params[:page].to_i %>
+      <br>
       <%= f.button :submit, "Get Results" %>
     <% end %>
   <% end %>
-
-
 <% end %>

@@ -5,8 +5,8 @@ class Quiz < ApplicationRecord
   belongs_to :user
   belongs_to :subject
 
-  scope :questions, -> (subject_id) { Question.where(subject_id: subject_id)}
-  scope :size, -> (subject_id) { Question.where(subject_id: subject_id).count}
+  scope :questions, -> (subject_id) { Question.where(subject_id: subject_id) }
+  scope :size, -> (subject_id) { Question.where(subject_id: subject_id).count }
 
   def self.choices(subject_id)
   	quest = Question.where(subject_id: subject_id)
@@ -24,30 +24,5 @@ class Quiz < ApplicationRecord
   	quest = Question.where(subject_id: subject_id)
   	answer = quest.distinct.pluck(:answer)
   end
-
-  def self.radio
-    :choice
-  end
 end
 
-
-
-
-
-
-
-
-
-
-# def self.choices(subject_id)
-  #   @question_object = Question.where(subject_id: subject_id)
-  #   @questions = @question_object.distinct.pluck(:question)
-  #   @choices = @question_object.pluck(:choice1, :choice2, :choice3, :answer)
-
-    # p @question_object
-  #   p @questions
-  #   @choices.each do |choice|
-  #     choice.shuffle!
-  #   end
-  #   return @question_object, @questions, @choices
-  # end

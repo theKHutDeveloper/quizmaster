@@ -43,21 +43,8 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    if current_user.admin?
-      @question = Question.find(params[:id])
-      render 'show'
-    # else 
-    #   @questions = Question.by_subject(params[:id]).paginate(:page => params[:page], :per_page => 1)
-    #   @options = []
-    #   @quiz = Quiz.new(user_id: current_user.id, subject_id: params[:id], answered_question: params[:choices])
-    # #   p params[:choices]
-    # #   p @quiz
-    #   @questions.each do |q|
-    #     @options.push(q.convert)
-    #   end
-      
-    #   render 'quiz'
-    # end
+    if current_user.admin? @question = Question.find(params[:id])
+    render 'show'
   end
 
   def destroy; end
@@ -69,3 +56,4 @@ class QuestionsController < ApplicationController
                                      :choice2, :choice3, :answer)
   end
 end
+

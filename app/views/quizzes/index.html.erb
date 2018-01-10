@@ -9,9 +9,7 @@
       <% @choices.each do |choice| %>
         <h5><%= choice %></h5>
       <% end %>
-    
 
-    
     <% if params[:page].to_i == @quiz_size %>
       <%= f.button :submit, "Get Results" %>
     <% end %>

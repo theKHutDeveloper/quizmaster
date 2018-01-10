@@ -6,7 +6,7 @@
         	<% if current_user.admin? %>
 	        	<%= questions_path(subject_id: Subject.find_by_subject("Daredevil").id) %>
 	        <% else %>
-	        	<%= question_path(Subject.find_by_subject("Daredevil").id) %>
+	        	<%= quizzes_path(subject_id: Subject.find_by_subject("Daredevil").id) %>
 	        <% end %>
 				>
         <img src="/assets/daredevil.jpg" alt="Daredevil"></a>
@@ -22,7 +22,7 @@
         	<% if current_user.admin? %>
 	        	<%= questions_path(subject_id: Subject.find_by_subject("Iron Fist").id) %>
 	        <% else %>
-	        	<%= question_path(Subject.find_by_subject("Iron Fist").id) %>
+	        	<%= quizzes_path(subject_id: Subject.find_by_subject("Iron Fist").id) %>
 	        <% end %>
 				>
         <img src="/assets/ironfist.jpg" alt="Iron Fist"></a>
@@ -38,7 +38,7 @@
         	<% if current_user.admin? %>
 	        	<%= questions_path(subject_id: Subject.find_by_subject("Jessica Jones").id) %>
 	        <% else %>
-	        	<%= question_path(Subject.find_by_subject("Jessica Jones").id) %>
+	        	<%= quizzes_path(subject_id: Subject.find_by_subject("Jessica Jones").id) %>
 	        <% end %>
 				>
 				<img src="/assets/jessicajones.jpg" alt="Jessica Jones"></a>
@@ -54,7 +54,7 @@
 	        <% if current_user.admin? %>
 	        	<%= questions_path(subject_id: Subject.find_by_subject("Luke Cage").id) %>
 	        <% else %>
-	        	<%= question_path(Subject.find_by_subject("Luke Cage").id) %>
+	        	<%= new_quiz_path(user_id: current_user.id, subject_id: Subject.find_by_subject("Luke Cage").id) %>
 	        <% end %>
         >
         <img src="/assets/lukecage.jpg" alt="Luke Cage"></a>
@@ -70,7 +70,7 @@
         	<% if current_user.admin? %>
         		<%= questions_path(subject_id: Subject.find_by_subject("Punisher").id) %>
         	<% else %>
-        		<%= question_path(Subject.find_by_subject("Punisher").id) %>
+        		<%= quizzes_path(subject_id: Subject.find_by_subject("Punisher").id) %>
         	<% end %>
          >
         	<img src="/assets/punisher.jpg" alt="Punisher"></a>

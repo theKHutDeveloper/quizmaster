@@ -11,8 +11,6 @@ class Question < ApplicationRecord
   	arr.push(answer)
   	arr.push(choice2) if !choice2.blank?
   	arr.push(choice3) if !choice3.blank?
-
   	arr.shuffle
-  	#arr.map { |x| x.to_sym }
   end
 end

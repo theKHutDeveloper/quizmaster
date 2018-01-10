@@ -1,0 +1,21 @@
+<h3>Quiz</h3>
+
+<%= will_paginate @questions, :renderer => BootstrapPagination::Rails %><br>
+
+<% @questions.each_with_index do |quiz, i| %>
+  <%= simple_form_for quiz do |f| %>
+    <h4><%= quiz.question %></h4>
+
+      <% @choices.each do |choice| %>
+        <h5><%= choice %></h5>
+      <% end %>
+    
+
+    
+    <% if params[:page].to_i == @quiz_size %>
+      <%= f.button :submit, "Get Results" %>
+    <% end %>
+
+  <% end %>
+
+<% end %>

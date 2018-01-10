@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :questions
   resources :subjects
   resources :admin_pages
+  resources :quizzes
 end

@@ -1,19 +1,20 @@
-<h3>Quiz</h3>
+<h3>Quizzes Completed</h3>
 
-<%= will_paginate @questions, :renderer => BootstrapPagination::Rails %><br>
+<table class="table">
+	<tr>
+		<th>Date</th>
+		<th>Subject</th>
+		<th>Correct</th>
+		<th></th>
+	</tr>
+	<% @quizzes.each_with_index do |quiz, i| %>
+		<tr>
+			<td><%= quiz.created_at.strftime("%e %b %Y %H:%M %p") %></td>
+			<td><%= Subject.find(quiz.subject_id).subject %></td>
+			<td><%= quiz.score %>%</td>
+			<td><a class="btn btn-info btn-sm" href=<%= quiz_path(id: quiz.id, user_id: quiz.user_id, subject_id: quiz.subject_id) %> > View</a></td>
+		</tr>
+	<% end %>
+</table>
 
-<% @questions.each_with_index do |quiz, i| %>
-  <%= simple_form_for quiz do |f| %>
-    <h4><%= quiz.question %></h4>
-
-      <% @choices.each do |choice| %>
-        <h5><%= choice %></h5>
-      <% end %>
-
-    <% if params[:page].to_i == @quiz_size %>
-      <%= f.button :submit, "Get Results" %>
-    <% end %>
-
-  <% end %>
-
-<% end %>
+<%=link_to "Back", root_path %>

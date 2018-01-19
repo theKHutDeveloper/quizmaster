@@ -1,3 +1,8 @@
+<div class="row">
+  <div class="col-xs-6 col-md-2 col-md-offset-1"  >
+    <h3><%=link_to "Profile", quizzes_path %></h3>
+  </div>
+</div>
 
 <div class="row">
   	<div class="col-xs-6 col-md-2 col-md-offset-1">
@@ -6,7 +11,8 @@
         	<% if current_user.admin? %>
 	        	<%= questions_path(subject_id: Subject.find_by_subject("Daredevil").id) %>
 	        <% else %>
-	        	<%= quizzes_path(subject_id: Subject.find_by_subject("Daredevil").id) %>
+            <%= new_quiz_path(user_id: current_user.id,
+              subject_id: Subject.find_by_subject("Daredevil").id) %>
 	        <% end %>
 				>
         <img src="/assets/daredevil.jpg" alt="Daredevil"></a>
@@ -22,7 +28,8 @@
         	<% if current_user.admin? %>
 	        	<%= questions_path(subject_id: Subject.find_by_subject("Iron Fist").id) %>
 	        <% else %>
-	        	<%= quizzes_path(subject_id: Subject.find_by_subject("Iron Fist").id) %>
+            <%= new_quiz_path(user_id: current_user.id,
+              subject_id: Subject.find_by_subject("Iron Fist").id) %>
 	        <% end %>
 				>
         <img src="/assets/ironfist.jpg" alt="Iron Fist"></a>
@@ -38,7 +45,8 @@
         	<% if current_user.admin? %>
 	        	<%= questions_path(subject_id: Subject.find_by_subject("Jessica Jones").id) %>
 	        <% else %>
-	        	<%= quizzes_path(subject_id: Subject.find_by_subject("Jessica Jones").id) %>
+            <%= new_quiz_path(user_id: current_user.id,
+              subject_id: Subject.find_by_subject("Jessica Jones").id) %>
 	        <% end %>
 				>
 				<img src="/assets/jessicajones.jpg" alt="Jessica Jones"></a>
@@ -71,7 +79,8 @@
         	<% if current_user.admin? %>
         		<%= questions_path(subject_id: Subject.find_by_subject("Punisher").id) %>
         	<% else %>
-        		<%= quizzes_path(subject_id: Subject.find_by_subject("Punisher").id) %>
+            <%= new_quiz_path(user_id: current_user.id,
+              subject_id: Subject.find_by_subject("Punisher").id) %>
         	<% end %>
          >
         	<img src="/assets/punisher.jpg" alt="Punisher"></a>

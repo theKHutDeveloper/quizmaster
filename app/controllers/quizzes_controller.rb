@@ -3,12 +3,7 @@ class QuizzesController < ApplicationController
 	before_action :require_user, only: %i[index, new, show]
 
 	def index
-		@questions = Quiz.questions(params[:subject_id])
-		@quiz_size = Quiz.size(params[:subject_id])
-
-		@questions.each do |question|
-			@choices = question.convert
-		end
+		@quizzes = Quiz.all_quizzes(current_user.id)
 	end
 
 	def new
@@ -43,12 +38,20 @@ class QuizzesController < ApplicationController
 	end
 
 	def show
-
+		@quiz = Quiz.review(params[:id], params[:user_id], params[:subject_id])
+		#get an array to hold the answers given by user
+		#get the questions from the question id in array
+		#if answer is correct have a tick image placed next to answer
+		#if answer is incorrect have a cross image placed next to answer
 	end
 
 private
 
 	def quiz_params
 		params.require(:quiz).permit(:user_id, :subject_id, :answered_question)
+	end
+
+	def show_params
+		params.require(:quiz).permit(:id, :user_id, :subject_id)
 	end
 end

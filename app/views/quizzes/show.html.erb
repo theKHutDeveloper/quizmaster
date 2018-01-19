@@ -1,2 +1,7 @@
 <!-- quizzes show.html.erb -->
 <h3>Quizzes show</h3>
+
+<h5><%= @quiz.id %></h5>
+<h5><%= @quiz.user_id %></h5>
+<h5><%= Subject.find(@quiz.subject_id).subject %></h5>
+<h5><%= @quiz.created_at.strftime("%e %b %Y %H:%M %p") %></h5>

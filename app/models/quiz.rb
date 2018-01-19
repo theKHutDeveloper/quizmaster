@@ -1,12 +1,12 @@
 # Quiz model class
 class Quiz < ApplicationRecord
-	# store :answered_questions, accessors: [:question_id, :user_answer]
-
   belongs_to :user
   belongs_to :subject
 
   scope :questions, -> (subject_id) { Question.where(subject_id: subject_id) }
   scope :size, -> (subject_id) { Question.where(subject_id: subject_id).count }
+  scope :all_quizzes, -> (user_id) { Quiz.where(user_id: user_id) }
+  scope :review, -> (id, user_id, subject_id) { Quiz.where(id: id, user_id: user_id, subject_id: subject_id).first }
 
   def self.choices(subject_id)
   	quest = Question.where(subject_id: subject_id)
@@ -16,7 +16,6 @@ class Quiz < ApplicationRecord
 			choice.select! { |a| a.length > 0 }
   		choice.shuffle!
   	end
-
   	list
   end
 
@@ -41,8 +40,6 @@ class Quiz < ApplicationRecord
         end
       end
     end
-
     percentage = (correct.to_f / size) * 100
   end
 end
-

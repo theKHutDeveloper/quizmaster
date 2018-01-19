@@ -30,15 +30,16 @@ class QuizzesController < ApplicationController
 
 	def create
 		@quiz = Quiz.new(quiz_params)
+		results =  Quiz.result(quiz_params[:subject_id], quiz_params[:answered_question])
+		@quiz.score = results
 
 		if !@quiz.save
       flash[:danger] = 'Your changes could not be saved!!'
+      redirect_to new_quiz_path(user_id: quiz_params[:user_id], subject_id: quiz_params[:subject_id])
 		else
-			results =  Quiz.result(quiz_params[:subject_id], quiz_params[:answered_question])
 			flash[:success] = 'Your changes have been updated'
+			render 'show'
 		end
-
-		render 'show'
 	end
 
 	def show

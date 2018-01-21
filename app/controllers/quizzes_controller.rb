@@ -3,7 +3,7 @@ class QuizzesController < ApplicationController
 	before_action :require_user, only: %i[index, new, show]
 
 	def index
-		@quizzes = Quiz.all_quizzes(current_user.id)
+		@quizzes = Quiz.all_quizzes(current_user.id).paginate(page: params[:page], per_page: 5)
 	end
 
 	def new

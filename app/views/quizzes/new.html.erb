@@ -16,29 +16,3 @@
 
   <%= f.button :submit, "Get Results" %>
 <% end %>
-
-<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-<script>
-  var totalQuestions = 0;
-  var jsonObject = '{"answers":[]}';
-
-  $(document).ready(function() {
-    $("input:radio[name=answered_question]").click(function() {
-      var answer = $("input:radio[name=answered_question]:checked").val();
-      var question_id = $("input:radio[name=answered_question]:checked").closest("#question").children("h3").html();
-
-      var parseObj = JSON.parse(jsonObject);
-      parseObj["answers"].push({"question_id": + question_id, "answer": answer});
-      jsonObject = JSON.stringify(parseObj);
-
-      totalQuestions = totalQuestions + 1;
-
-      if(totalQuestions == 10){
-        $("input#quiz_answered_question").val(jsonObject);
-        console.log(jsonObject);
-      }
-
-      $("input:radio[name=answered_question]:checked").closest("#question").hide();
-     });
-  });
-</script>

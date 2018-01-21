@@ -32,17 +32,15 @@ class QuizzesController < ApplicationController
       flash[:danger] = 'Your changes could not be saved!!'
       redirect_to new_quiz_path(user_id: quiz_params[:user_id], subject_id: quiz_params[:subject_id])
 		else
-			flash[:success] = 'Your changes have been updated'
-			render 'show'
+			redirect_to quiz_path(id: @quiz.id, user_id: @quiz.user_id, subject_id: @quiz.subject_id)
 		end
 	end
 
 	def show
 		@quiz = Quiz.review(params[:id], params[:user_id], params[:subject_id])
-		#get an array to hold the answers given by user
-		#get the questions from the question id in array
-		#if answer is correct have a tick image placed next to answer
-		#if answer is incorrect have a cross image placed next to answer
+		@questions = Quiz.reveal_questions(@quiz.answered_question)
+		@answers = Quiz.reveal_user_answers(@quiz.answered_question)
+		@correct_list = Quiz.reveal_correct_answers(@quiz.subject_id, @quiz.answered_question)
 	end
 
 private

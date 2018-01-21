@@ -42,4 +42,45 @@ class Quiz < ApplicationRecord
     end
     percentage = (correct.to_f / size) * 100
   end
+
+  def self.reveal_user_answers(answered_questions)
+    user_answers = JSON.parse(answered_questions)
+
+    answers = []
+    user_answers["answers"].each do |answer|
+      answers << answer["answer"]
+    end
+    answers
+  end
+
+  def self.reveal_questions(answered_questions)
+    user_answers = JSON.parse(answered_questions)
+
+    questions = []
+    user_answers["answers"].each do |answer|
+      questions << Question.find(answer["question_id"]).question
+    end
+    questions
+  end
+
+
+  def self.reveal_correct_answers(subject_id, answered_questions)
+    user_answers = JSON.parse(answered_questions)
+    answers = answers(subject_id)
+
+    correct_list = []
+    user_answers["answers"].each do |answer|
+      question_id = answer["question_id"]
+      correct_answer = answers.detect { |a| a[0] == question_id }
+
+      if !answer.nil?
+        if correct_answer[1] == answer["answer"]
+          correct_list << true
+        else
+          correct_list << false
+        end
+      end
+    end
+    correct_list
+  end
 end

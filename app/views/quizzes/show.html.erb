@@ -1,7 +1,31 @@
 <!-- quizzes show.html.erb -->
-<h3>Quizzes show</h3>
+<div>
+	<h5><%=link_to "< Back", quizzes_path %></h5>
+</div>
 
-<h5><%= @quiz.id %></h5>
-<h5><%= @quiz.user_id %></h5>
-<h5><%= Subject.find(@quiz.subject_id).subject %></h5>
-<h5><%= @quiz.created_at.strftime("%e %b %Y %H:%M %p") %></h5>
+<table class="table">
+	<tr class="success">
+		<th>Quiz completed: <%= Subject.find(@quiz.subject_id).subject %></td>
+		<th>Date completed: <%= @quiz.created_at.strftime("%e %b %Y %H:%M %p") %></td>
+		<th>Success Rate: <%= @quiz.score %>%</td>
+	</tr>
+</table>
+
+<table class="table table-striped">
+	<tr>
+		<th>Question</th>
+		<th>Your Answer</th>
+		<th>Correct?</th>
+	</tr>
+	<% @questions.each_with_index do |q, i| %>
+		<tr>
+			<td><%= q %></td>
+			<td><%= @answers[i] %></td>
+			<% if @correct_list[i] == true %>
+				<td><img src="/assets/hands_up.png" alt="correct" height="42" width="42"></td>
+			<% else %>
+				<td ><img src="/assets/hands_down.png" alt="correct" height="42" width="42"></td>
+			<% end %>
+		</tr>
+	<% end %>
+</table>

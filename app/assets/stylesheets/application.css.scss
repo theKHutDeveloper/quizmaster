@@ -16,14 +16,23 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body {
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
 .jumbotron {
 	background-image: url(/assets/defenders.png);
 	background-size: cover;
 	height: 100%;
 	color: yellow; 
+	padding-left: 20px;
+}
+
+.caption {
+	text-align: center;
+}
+
+.quiz_title {
+	color: white;
+}
+
+.content {
+	padding-left: 30px;
+	padding-right: 30px;
 }

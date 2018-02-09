@@ -5,6 +5,7 @@
 totalQuestions = 0
 jsonObject = '{"answers":[]}'
 $(document).ready ->
+  $('.button-hide').hide()
   $('input:radio[name=answered_question]').click ->
     answer = $('input:radio[name=answered_question]:checked').val()
     question_id = $('input:radio[name=answered_question]:checked').closest('#question').children('h3').html()
@@ -16,7 +17,7 @@ $(document).ready ->
     totalQuestions = totalQuestions + 1
     if totalQuestions == 10
       $('input#quiz_answered_question').val jsonObject
-      console.log jsonObject
+      $('.button-hide').show()
     $('input:radio[name=answered_question]:checked').closest('#question').hide()
     return
   return

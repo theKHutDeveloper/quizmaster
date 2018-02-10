@@ -4,6 +4,7 @@ class QuestionsController < ApplicationController
   before_action :require_admin, only: %i[new index edit update destroy]
 
   def index
+    @page_title = "Quiz Questions"
     if params[:subject_id].blank?
       @questions = Question.all.paginate(page: params[:page], per_page: 5)
     else
@@ -12,6 +13,7 @@ class QuestionsController < ApplicationController
   end
 
   def new
+    @page_title = "New Question"
     @question = Question.new
   end
 
@@ -28,6 +30,7 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+    @page_title = "Edit Question"
     @question = Question.find(params[:id])
   end
 
@@ -43,7 +46,11 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    if current_user.admin? @question = Question.find(params[:id])
+    @page_title = "Show Updated Question"
+
+    if current_user.admin?
+      @question = Question.find(params[:id])
+    end
     render 'show'
   end
 

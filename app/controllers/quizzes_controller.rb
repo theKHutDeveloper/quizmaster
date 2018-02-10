@@ -3,6 +3,7 @@ class QuizzesController < ApplicationController
 	before_action :require_user, only: %i[index, new, show]
 
 	def index
+		@page_title = "Quiz History"
 		@quizzes = Quiz.all_quizzes(current_user.id).paginate(page: params[:page], per_page: 5)
 	end
 
@@ -11,6 +12,7 @@ class QuizzesController < ApplicationController
 		@user_id = params[:user_id]
 		@subject_id = params[:subject_id]
 
+		@page_title = "#{Subject.find(@subject_id).subject} Quiz"
 		@questions = Quiz.questions(params[:subject_id])
 		
 		@choices = []
@@ -21,7 +23,6 @@ class QuizzesController < ApplicationController
 			@question_ids << question.id
 		end
 	end
-
 
 	def create
 		@quiz = Quiz.new(quiz_params)
@@ -37,6 +38,7 @@ class QuizzesController < ApplicationController
 	end
 
 	def show
+		@page_title = "Quiz Results"
 		@quiz = Quiz.review(params[:id], params[:user_id], params[:subject_id])
 		@questions = Quiz.reveal_questions(@quiz.answered_question)
 		@answers = Quiz.reveal_user_answers(@quiz.answered_question)

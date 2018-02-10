@@ -63,7 +63,6 @@ class Quiz < ApplicationRecord
     questions
   end
 
-
   def self.reveal_correct_answers(subject_id, answered_questions)
     user_answers = JSON.parse(answered_questions)
     answers = answers(subject_id)

@@ -3,10 +3,12 @@ class SubjectsController < ApplicationController
   before_action :require_admin, only: %i[new create edit update destroy]
 
   def index
+    @page_title = "Subject List"
     @subjects = Subject.all
   end
 
   def new
+    @page_title = "New Subject"
     @subject = Subject.new
   end
 
@@ -23,10 +25,12 @@ class SubjectsController < ApplicationController
   end
 
   def show
+    @page_title = "Show Subject"
     @subject = Subject.find(params[:id])
   end
 
   def edit
+    @page_title = "Edit Subject"
     @subject = Subject.find(params[:id])
   end
 

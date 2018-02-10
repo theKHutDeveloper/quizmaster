@@ -1,2 +1,20 @@
-<h3>Users index, show a list of users details first name, last name, 
-email address, role - Delete/Change role</h3>
+<%= will_paginate @users, :renderer => BootstrapPagination::Rails %><br>
+
+<table class="table table-striped">
+	<tr>
+		<th>Last Name</th>
+		<th>First Name</th>
+		<th>Email</th>
+		<th>Role</th>
+		<th></th>
+	</tr>
+	<% @users.each do | user |%>
+		<tr>
+			<td><%= user.lastname %></td>
+			<td><%= user.firstname %></td>
+			<td><%= user.email %></td>
+			<td><%= user.role %></td>
+			<td><a href= <%=edit_user_path(user.id)%> class="btn btn-primary btn-xs" role="button">Edit</a></td>
+		</tr>
+	<% end %>
+</table>

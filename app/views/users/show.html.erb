@@ -1,0 +1,23 @@
+<table class="table table-bordered">
+	<tr>
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>Email</th>
+		<th>Password</th>
+		<th>Role</th>
+	</tr>
+
+	<tr>
+		<td><%= @user.firstname %></td>
+		<td><%= @user.lastname %></td>
+		<td><%= @user.email %></td>
+		<td> ************* </td>
+		<td><%= @user.role %></td>
+	</tr>
+</table>
+
+<% if current_user.admin? %>
+	<h5><%=link_to "< Back", admin_pages_path %></h5>
+<% else %>
+	<h5><%=link_to "< Back", root_path %></h5>
+<% end %>

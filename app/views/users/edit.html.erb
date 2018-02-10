@@ -1,0 +1,15 @@
+<%= simple_form_for @user do |f| %>
+	<%= f.input :firstname %>
+	<%= f.input :lastname %>
+	<%= f.input :email, disabled: true %>
+
+	<% if current_user == @user %>
+		<%= f.input :password %>
+	<% end %>
+
+	<% if current_user.admin? %>
+		<%= f.input :role, collection: ['subscriber', 'admin'] %>
+	<% end %>
+
+	<%= f.button :submit %>
+<% end %>

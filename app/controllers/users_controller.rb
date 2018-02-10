@@ -1,7 +1,7 @@
 # Controller for User
 class UsersController < ApplicationController
   before_action :require_admin, only: %i[index, destroy]
-  before_action :require_user, only: %i[new, show, edit]
+  before_action :require_user, only: %i[new, show, edit, destroy]
 
   def index
     @page_title = "Subscribed Users"
@@ -42,10 +42,6 @@ class UsersController < ApplicationController
   def show
     @page_title = "Show User Details"
     @user = User.find(params[:id])
-  end
-
-  def destroy
-
   end
 
   private

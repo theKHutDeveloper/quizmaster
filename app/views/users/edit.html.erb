@@ -13,3 +13,9 @@
 
 	<%= f.button :submit %>
 <% end %>
+
+<% if current_user.admin? %>
+	<h5><%=link_to "< Back to Admin", admin_pages_path %></h5>
+<% else %>
+	<h5><%= link_to " < Back to Home", root_path %></h5>
+<% end %>

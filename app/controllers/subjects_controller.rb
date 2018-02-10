@@ -45,8 +45,6 @@ class SubjectsController < ApplicationController
     end
   end
 
-  def destroy; end
-
   private
 
   def subject_params

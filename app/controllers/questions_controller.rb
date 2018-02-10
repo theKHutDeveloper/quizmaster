@@ -54,8 +54,6 @@ class QuestionsController < ApplicationController
     render 'show'
   end
 
-  def destroy; end
-
   private
 
   def question_params

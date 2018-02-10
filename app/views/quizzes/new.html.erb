@@ -1,6 +1,6 @@
-<%=link_to "< Back", root_path %>
-
-<h2>New <%=Subject.find(@subject_id).subject %> Quiz</h2>
+<div>
+  <%=link_to "< Back", root_path %>
+</div>
 
 <%= simple_form_for @quiz do |f| %>
   <%= f.hidden_field :user_id, value: @user_id %>
@@ -16,5 +16,5 @@
     </div>
   <% end %>
 
-  <%= f.button :submit, "Get Results" %>
+  <div class="button-hide"><%= f.button :submit,"Get Results" %></div>
 <% end %>

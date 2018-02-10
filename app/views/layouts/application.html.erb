@@ -3,8 +3,8 @@
   <head>
     <title>Quizmaster</title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application' %>
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
@@ -15,6 +15,7 @@
             <% if current_user %>
                 <li><%= link_to "Log Out", logout_path, method: "delete"%></li>
                 <li><%=link_to current_user.email, root_path %></li>
+                <li><%=link_to "Quiz History", quizzes_path %></li>
                 <% if current_user.admin? %>
                   <li><%= link_to "Admin Page", admin_pages_path %></li>
                 <% end %>
@@ -28,8 +29,8 @@
 
     <div class="jumbotron">
       <h1 id="header">QuizMaster</h1>
-      <p id="home">Test your knowledge on the Marvel Cinematic Universe
-      (Television Series)</p>
+      <p id="home">Test your knowledge on the Marvel Cinematic Universe(Television Series)</p>
+      <h2 class='quiz_title'><%= page_title %></h2>
     </div>
 
     <div class="container">
@@ -38,6 +39,8 @@
         <% end %>
     </div>
 
-    <%= yield %>
+    <div class="content">
+      <%= yield %>
+    </div>
   </body>
 </html>

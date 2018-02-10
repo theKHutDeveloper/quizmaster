@@ -1,11 +1,17 @@
-<h2>Subject show</h2>
+<table class="table table-bordered">
+	<tr>
+		<th>id</th>
+		<th>Subject</th>
+		<th>Difficulty</th>
+		<th>Points</th>
+	</tr>
 
-<div>
-	<h3><%= @subject.id %></h3>
-	<h3><%= @subject.subject %></h3>
-	<h3><%= @subject.difficulty %></h3>
-	<h3><%= @subject.points %></h3>
-</div>
+	<tr>
+		<td><%= @subject.id %></td>
+		<td><%= @subject.subject %></td>
+		<td><%= @subject.difficulty %></td>
+		<td><%= @subject.points %></td>
+	</tr>
+</table>
 
-<%=link_to "Add new subject", new_subject_path %>
-<%=link_to "Back to Admin", admin_pages_path %>
+<%=link_to "< Back to Admin", admin_pages_path %>

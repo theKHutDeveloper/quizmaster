@@ -1,5 +1,32 @@
-<h1>Admin Page</h1>
+<table class="table">
+  <tr>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href= <%=questions_path%>>
+        <img src="/assets/icons8-test-passed-64.png" alt="question icon"></a>
+        <div class="caption"><h4>Questions</h4></div>
+      </div>
+    </div>
+  </tr>
 
-<h2><%=link_to "Create, Edit or Delete a Question", questions_path %> </h2>
-<h2><%=link_to "Create, Edit or Delete a Subject", subjects_path %></h2>
-<h2><%=link_to "Create, Edit or Delete a User", users_path %></h2>
+  <tr>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href= <%=subjects_path%>>
+        <img src="/assets/heroes-and-villains-12.png" alt="superhero icon"></a>
+        <div class="caption"><h4>Subjects</h4></div>
+      </div>
+    </div>
+  </tr>
+
+  <tr>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href= <%=users_path%>>
+        <img src="/assets/account_details.png" alt="users icon"></a>
+        <div class="caption"><h4>Users</h4></div>
+      </div>
+    </div>
+  </tr>
+</table>
+
